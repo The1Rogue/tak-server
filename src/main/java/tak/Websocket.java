@@ -275,7 +275,7 @@ public class Websocket{
 			//int mask=rand.nextInt(32);
 			byte[] bytes = msg.getBytes( StandardCharsets.ISO_8859_1 );
 			outstream.write(128+opcode);
-			int outlen=bytes.length+1;
+			int outlen=bytes.length;
 			if(outlen<126){
 				outstream.write(outlen);
 			}
@@ -296,7 +296,6 @@ public class Websocket{
 				outstream.write(outlen);
 			}
 			outstream.write(bytes);
-			outstream.write(10);
 			outstream.flush();
 		}
 		catch(Throwable t){
